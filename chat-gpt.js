@@ -36,6 +36,8 @@ userInterface.on('line', async (input) => {
     messages
   });
   console.log('\n')
-  console.log(response.data.choices[0].message.content);
+  console.log('\x1b[44m\x1b[37m%s\x1b[0m', response.data.choices[response.data.choices.length - 1].message.content);
+  console.log('\n')
+
   userInterface.prompt()
 });
