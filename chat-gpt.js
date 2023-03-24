@@ -22,29 +22,20 @@ const userInterface = readline.createInterface({
 
 userInterface.prompt()
 
+const messages = []
 userInterface.on('line', async (input) => {
+  const newMessage = {
+    role: "user",
+    "content": input
+  }
+
+  messages.push(newMessage)
+
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "user",
-        "content": input
-      },
-    ]
+    messages
   });
   console.log('\n')
   console.log(response.data.choices[0].message.content);
   userInterface.prompt()
 });
-
-
-
-
-
-
-
-
-
-
-
-
